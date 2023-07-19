@@ -1,0 +1,17 @@
+<ng-container>
+    <mat-button-toggle-group   
+        name="toggleGroup"
+        [vertical]="true"
+        [multiple]="multipleSelection"
+        (change)="onToggleChange($event)">
+        <mat-button-toggle
+            *ngFor="let btnValue of btnValues; let i = index" 
+            mat-button-toggle 
+            [checked]="btnValue === loadedComponent"
+            value="{{btnValue}}"
+            [routerLink]="'/' + btnValue"
+            >
+            {{ btnValue | buttonTitle }}
+        </mat-button-toggle>
+    </mat-button-toggle-group>
+</ng-container>

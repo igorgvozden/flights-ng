@@ -1,0 +1,12 @@
+<div *ngIf="flights" class="container">
+    <h3 class="container-title">Flights</h3>
+    <p class="container-subtitle">Prices include required taxes + fees for 1 adult. Optional charges and bag fees may
+        apply. Passenger assistance
+        info.</p>
+    <div class="table">
+        <div *ngFor="let flight of flights.departureFlights">
+            <app-flight-overview [flight]="flight"></app-flight-overview>
+        </div>
+
+    </div>
+</div>

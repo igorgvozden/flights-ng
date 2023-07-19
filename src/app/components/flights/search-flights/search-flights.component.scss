@@ -1,0 +1,82 @@
+@import "../../../../scss/variables";
+
+.container {
+  margin: 0 auto;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  width: 55%;
+  max-width: 55%;
+}
+
+.select-container {
+  width: 100%;
+}
+
+.search-form {
+  width: 100%;
+  margin-top: 5rem;
+  padding: 0 2rem 2.5rem;
+  box-shadow: 0 1px 3px 0 rgba(60, 64, 67, 0.3),
+    0 4px 8px 3px rgba(60, 64, 67, 0.15);
+  border-radius: 8px;
+}
+
+.form-inputs {
+  display: flex;
+  flex-wrap: nowrap;
+  width: 100%;
+}
+
+.search-input {
+  padding: 0.9rem;
+  margin-right: 5px;
+  font-size: 1rem;
+  border: 1px solid $medium-grey;
+  border-radius: 4px;
+  width: 40%;
+  max-width: 40%;
+  min-width: 25%;
+}
+
+.search-input--date {
+  margin-left: 5px;
+  width: 20%;
+  max-width: 20%;
+  min-width: 15%;
+}
+
+.search-submit-btn {
+  position: absolute;
+  bottom: -1.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.select-container {
+  width: 100%;
+  display: flex;
+}
+
+.select {
+  display: flex;
+  border-radius: 4px;
+  flex-basis: 12%;
+  justify-content: flex-start;
+  align-items: center;
+  margin-right: 3rem;
+
+  &:hover {
+    background-color: $light-grey;
+  }
+}
+
+.select-icon {
+  color: $dark-grey;
+}
+
+.search-select {
+  padding: 0.5rem 0.1rem;
+  font-size: 0.8rem;
+  width: 9rem;
+}

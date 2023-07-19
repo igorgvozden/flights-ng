@@ -1,0 +1,24 @@
+@import "../../../scss/variables";
+
+mat-progress-bar {
+  position: absolute;
+  z-index: 999;
+}
+
+.app-content {
+  display: flex;
+}
+
+.side-nav {
+  flex-basis: 10%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+  padding: 2rem;
+  background-color: $light-grey;
+  // border-right: solid 1px #e0e0e0;
+}
+.component-content {
+  flex-basis: 90%;
+}

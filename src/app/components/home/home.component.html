@@ -1,0 +1,11 @@
+<mat-progress-bar *ngIf="showProgressBar" mode="indeterminate" aria-label="progress-bar"></mat-progress-bar>
+
+<app-nav [users]="users" (btnClick)="navBtnClick($event)"></app-nav>
+<div class="app-content">
+    <div class="side-nav">
+        <app-sidenav [tabs]="sideNavTabs"></app-sidenav>
+    </div>
+    <div class="component-content">
+        <router-outlet></router-outlet>
+    </div>
+</div>

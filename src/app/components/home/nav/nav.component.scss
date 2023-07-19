@@ -1,0 +1,9 @@
+@import "../../../../scss/variables";
+
+.container {
+  display: flex;
+  padding: 0.5rem;
+  border-bottom: solid 1px $medium-grey;
+  justify-content: flex-end;
+  align-items: center;
+}

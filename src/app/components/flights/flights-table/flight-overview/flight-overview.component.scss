@@ -1,0 +1,41 @@
+@import "../../../../../scss/variables";
+
+.container {
+  padding: 1rem;
+  border-bottom: 1px solid $medium-grey;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.flight-number {
+  padding: 0 0.5rem;
+  color: $primary-navy;
+  width: fit-content;
+  border-radius: 50px;
+  background-color: $primary-light;
+}
+
+.departure-arrival__time {
+  padding: 0.5rem;
+}
+.departure-arrival__icon {
+  margin-right: 0.5rem;
+  color: $primary-light-navy;
+}
+
+.main-info {
+  font-weight: 500;
+}
+
+.additional-info--normal {
+  color: $primary-light-navy;
+}
+
+.additional-info--small {
+  color: $primary-light-navy;
+  font-size: 0.8rem;
+}

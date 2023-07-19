@@ -1,0 +1,29 @@
+<div class="container">
+    <mat-dialog-content>
+        <!-- <ng-container *ngTemplateOutlet="content"></ng-container> -->
+
+    </mat-dialog-content>
+</div>
+
+<ng-template #content>
+    <div class="user-content">
+
+        <div *ngIf="activeUser" class="user-content-active">
+            <p>Welcome,</p>
+            <h2 class="user-content-active--name">{{ activeUser.user.firstName + ' ' + activeUser.user.lastName }}</h2>
+            <p>{{ activeUser.user.email }}</p>
+            <app-button (btnClick)="manageAccount($event)" type="flat">Manage account</app-button>
+        </div>
+
+        <h4>Accounts</h4>
+        <hr>
+        <div *ngFor="let user of users" class="users-content-container">
+            <app-button (btnClick)="setActiveUser(user)" type="flat" [disabled]="user.id === activeUser?.id">
+                {{ user.user.firstName + ' ' + user.user.lastName }}
+            </app-button>
+        </div>
+        <hr>
+        <app-button (btnClick)="addNewUser($event)" type="flat">Add new account</app-button>
+        <app-button (btnClick)="logout($event)" type="flat">Log Out</app-button>
+    </div>
+</ng-template>

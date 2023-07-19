@@ -1,0 +1,66 @@
+<div class="container">
+    <form [formGroup]="searchData" (ngSubmit)="onSubmit()" class="search-form">
+
+        <div class="select-container">
+            <div class="select">
+                <span class="select-icon">
+                    <mat-icon *ngIf="!isRoundTrip">arrow_right_alt</mat-icon>
+                    <mat-icon *ngIf="isRoundTrip">sync_alt</mat-icon>
+                </span>
+                <mat-select [(value)]="isRoundTrip" class="search-select" disableRipple id="flight-direction"
+                    (selectionChange)="selectFlightDirection($event)">
+
+                    <mat-option [value]="false">One way</mat-option>
+                    <mat-option [value]="true">Round trip</mat-option>
+                </mat-select>
+            </div>
+            <div class="select">
+                <span class="select-icon">
+                    <mat-icon>person</mat-icon>
+                </span>
+                <mat-select [(value)]="passengerCount" class="search-select" disableRipple id="flight-passanger-count"
+                    (selectionChange)="selectPassengerNumber($event)">
+                    <mat-option [value]="1">1</mat-option>
+                    <mat-option [value]="2">2</mat-option>
+                </mat-select>
+            </div>
+            <div class="select">
+                <mat-select [(value)]="flightEconomyClass" class="search-select" disableRipple id="flight-economy-class"
+                    (selectionChange)="selectEconomyClass($event)">
+                    <mat-option [value]="'economy'">Economy</mat-option>
+                    <mat-option [value]="'first'">First class</mat-option>
+                </mat-select>
+            </div>
+        </div>
+
+        <div class="form-inputs">
+            <input type="text" placeholder="&#9900; Where from?" formControlName="origin" [matAutocomplete]="auto"
+                class="search-input">
+
+            <input type="text" id="destination" placeholder="&#9906; Anywhere" formControlName="destination"
+                [matAutocomplete]="autoDest" class="search-input">
+
+            <input type="date" [min]="today" id="departureDate" formControlName="departureDate"
+                class="search-input search-input--date">
+
+            <input *ngIf="isRoundTrip" type="date" [min]="today" id="returnDate" formControlName="returnDate"
+                class="search-input search-input--date">
+        </div>
+
+        <mat-autocomplete #auto="matAutocomplete">
+            <mat-option *ngFor="let city of filteredOriginCity | async" [value]="city">
+                {{city}}
+            </mat-option>
+        </mat-autocomplete>
+
+        <mat-autocomplete #autoDest="matAutocomplete">
+            <mat-option *ngFor="let city of filteredDestinationCity | async" [value]="city">
+                {{city}}
+            </mat-option>
+        </mat-autocomplete>
+
+        <app-button class="search-submit-btn" type="explore" [isSubmitBtn]="true">
+
+        </app-button>
+    </form>
+</div>

@@ -1,0 +1,22 @@
+@import "../../../../scss/variables";
+
+.container {
+  margin: 0 auto;
+  padding-top: 5rem;
+  width: 55%;
+  max-width: 55%;
+}
+
+.container-title {
+  font-weight: 500;
+}
+
+.container-subtitle {
+  font-size: 0.8rem;
+  color: $dark-grey;
+}
+
+.table {
+  border: 1px solid $medium-grey;
+  border-radius: 7px;
+}

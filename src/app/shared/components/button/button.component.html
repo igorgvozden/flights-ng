@@ -1,0 +1,62 @@
+<ng-container *ngIf="type === BUTTON_TYPE.BASIC">
+    <button mat-button [ngClass]="{
+            'button-disabled': disabled
+            
+        }" [disabled]="disabled" (click)="btnClick.emit($event)">
+        <ng-container *ngTemplateOutlet="content"></ng-container>
+    </button>
+</ng-container>
+
+<ng-container *ngIf="type === BUTTON_TYPE.FLAT">
+    <button mat-flat-button [ngClass]="{
+            'button-disabled': disabled
+            
+        }" [disabled]="disabled" (click)="btnClick.emit($event)">
+        <ng-container *ngTemplateOutlet="content"></ng-container>
+    </button>
+</ng-container>
+
+<ng-container *ngIf="type === BUTTON_TYPE.STROKED">
+    <button mat-stroked-button [ngClass]="{
+            'button-disabled': disabled
+            
+        }" [disabled]="disabled" (click)="btnClick.emit($event)">
+        <ng-container *ngTemplateOutlet="content"></ng-container>
+    </button>
+</ng-container>
+
+<ng-container *ngIf="type === BUTTON_TYPE.RAISED">
+    <button mat-raised-button [ngClass]="{
+            'button-disabled': disabled
+            
+        }" [disabled]="disabled" (click)="btnClick.emit(this)">
+        <ng-container *ngTemplateOutlet="content"></ng-container>
+    </button>
+</ng-container>
+
+<ng-container *ngIf="type === BUTTON_TYPE.ICON">
+    <button mat-mini-fab color="primary" [ngClass]="{
+            'button-disabled': disabled
+            
+        }" [disabled]="disabled" (click)="btnClick.emit(this)">
+        <mat-icon>person
+            <ng-container *ngTemplateOutlet="content"></ng-container>
+        </mat-icon>
+    </button>
+</ng-container>
+
+<ng-container *ngIf="type === BUTTON_TYPE.EXPLORE">
+    <button mat-raised-button color="primary" [ngClass]="{
+            'button-disabled': disabled
+            
+        }" [disabled]="disabled" (click)="btnClick.emit(this)">
+        Explore
+        <mat-icon>search
+            <ng-container *ngTemplateOutlet="content"></ng-container>
+        </mat-icon>
+    </button>
+</ng-container>
+
+<ng-template #content>
+    <ng-content></ng-content>
+</ng-template>

@@ -1,0 +1,27 @@
+@import "./variables";
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.sidenav {
+  background: $primary-navy;
+}
+
+.m-5 {
+  margin: 5px !important;
+}
+
+.mat-icon {
+  vertical-align: middle;
+}
+
+.mat-mdc-select-value {
+  width: fit-content;
+}

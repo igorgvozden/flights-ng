@@ -1,0 +1,5 @@
+<div class="container">
+    <h4>{{activeUser}}</h4>
+    <app-button (btnClick)="navBtnClick($event)" type="icon"></app-button>
+    <app-modal #modal [users]="users"></app-modal>
+</div>

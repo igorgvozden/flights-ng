@@ -1,0 +1,30 @@
+@import "../../../../scss/variables";
+
+::ng-deep .default-modal {
+  mat-dialog-container {
+    height: 200px;
+    width: 200px;
+  }
+}
+
+.user-content {
+  padding: 1rem;
+}
+
+.user-content-active {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+  color: white;
+  padding: 1rem;
+  background-color: $primary-navy;
+  border-radius: 4px;
+}
+
+.user-content-active--name {
+  margin: 0;
+}
+
+.users-content-container {
+  padding: 0;
+}
