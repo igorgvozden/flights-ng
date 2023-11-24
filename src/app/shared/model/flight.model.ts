@@ -11,4 +11,5 @@ export interface Flight {
   duration: FlightDuration;
   departureTime: string;
   arrivalTime: string;
+  extended?: boolean;
 }

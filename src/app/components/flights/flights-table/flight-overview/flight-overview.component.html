@@ -1,34 +1,115 @@
 <div class="container">
     <div class="row">
-        <div class="column column-1">
-            <p class="flight-number">&#x2708; {{ flight.flightNumber }}</p>
+        <ng-container *ngIf="!flight.extended; else extendedHeading">
+            <div class="column column-time">
+                <p class="flight-number">&#x2708; {{ flight.flightNumber }}</p>
+                <div class="departure-arrival__time">
+                    <mat-icon class="departure-arrival__icon">flight_takeoff</mat-icon>
+                    <span class="departure-arrival__text main-info"> {{ flight.departureTime | getTimeISO: true
+                        }}</span>
+                </div>
+
+                <div class="departure-arrival__time">
+                    <mat-icon class="departure-arrival__icon">flight_land </mat-icon>
+                    <span class="departure-arrival__text main-info"> {{ flight.arrivalTime | getTimeISO: true }}</span>
+                </div>
+            </div>
+            <div class="column column-info">
+                <p>Flight duration</p>
+                <p class="main-info">{{ flight.duration.locale }}</p>
+                <p class="additional-info--small">{{ flight.origin.code + '-' + flight.destination.code }}</p>
+            </div>
+            <div class="column column-seats">
+                <p>Seats</p>
+                <p>economy: {{ flight.aircraft.passengerCapacity.main }}</p>
+                <p>first class: {{ flight.aircraft.passengerCapacity.first }}</p>
+            </div>
+        </ng-container>
+        <div class="row" *ngIf="!flight.extended">
+            <div class="ticket-status-badge ticket-status-badge--booked" *ngIf="isBooked(flight)">
+                <mat-icon>bookmark_border</mat-icon>
+                <span>Booked</span>
+            </div>
+            <div class="ticket-status-badge ticket-status-badge--purchased" *ngIf="isPurchased(flight)">
+                <mat-icon>beenhere</mat-icon>
+                <span>Purchased</span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="column column-price">
+                <p class="main-info">{{ (flight.distance * 0.12 ).toFixed(2) }} $</p>
+            </div>
+            <div class="column column-button">
+                <app-button (btnClick)="expandClick(flight)" type="flat">
+                    <mat-icon *ngIf="!flight.extended">expand_more</mat-icon>
+                    <mat-icon *ngIf="flight.extended">expand_less</mat-icon>
+                </app-button>
+            </div>
+        </div>
+    </div>
+    <div class="row row-extendable" #extendable *ngIf="flight.extended">
+        <div class="column column-time">
             <div class="departure-arrival__time">
-                <mat-icon class="departure-arrival__icon">flight_takeoff</mat-icon>
-                <span class="departure-arrival__text main-info"> {{ flight.departureTime | getTimeISO: true }}</span>
+                <mat-icon class="departure-arrival__icon">place</mat-icon>
+                <span class="departure-arrival__text main-info"> {{ flight.departureTime | getTimeISO: true
+                    }} - {{ flight.origin.city }} ({{ flight.origin.code }})</span>
             </div>
 
             <div class="departure-arrival__time">
-                <mat-icon class="departure-arrival__icon">flight_land </mat-icon>
-                <span class="departure-arrival__text main-info"> {{ flight.arrivalTime | getTimeISO: true }}</span>
+                <mat-icon class="departure-arrival__icon">more_vert</mat-icon>
+                <span class="additional-info--small">Travel time: {{ flight.duration.locale
+                    }}</span>
+            </div>
+
+            <div class="departure-arrival__time">
+                <mat-icon class="departure-arrival__icon">place</mat-icon>
+                <span class="departure-arrival__text main-info"> {{ flight.arrivalTime | getTimeISO: true }} - {{
+                    flight.destination.city }} ({{ flight.destination.code }})</span>
+            </div>
+
+            <div class="departure-arrival__time airplane-info">
+                <p class="additional-info--small">Airplane model: {{ flight.aircraft.model }}</p>
+                <p class="additional-info--small">Number of seats: {{ flight.aircraft.passengerCapacity.total }}</p>
+                <p class="additional-info--small">First class capacity: {{ flight.aircraft.passengerCapacity.first }}
+                </p>
             </div>
         </div>
-        <div class="column column-2">
-            <p>Flight duration</p>
-            <p class="main-info">{{ flight.duration.locale }}</p>
-            <p class="additional-info--small">{{ flight.origin.code + '-' + flight.destination.code }}</p>
-        </div>
-        <div class="column column-3">
-            <p>Seats</p>
-            <p>economy: {{ flight.aircraft.passengerCapacity.main }}</p>
-            <p>first: {{ flight.aircraft.passengerCapacity.first }}</p>
-        </div>
-        <div class="column column-4">
-            <p class="main-info">{{ (flight.distance * 0.12 ).toFixed(2) }} $</p>
-        </div>
-        <div class="column column-5">
-            <app-button (btnClick)="btnClick(flight)" type="flat">
-                <mat-icon>expand_more</mat-icon>
-            </app-button>
+        <div class="column column-button">
+            <mat-icon *ngIf="!activeUser" class="info-tooltip-icon"
+                matTooltip="You have to Log In before booking or buying a ticket.">info</mat-icon>
+            <app-button *ngIf="!isBooked(flight) && !isPurchased(flight)" type="raised" (btnClick)="bookFlight(flight, activeUser)" [disabled]="!activeUser">Book
+                flight</app-button>
+            <!-- <app-button *ngIf="ticketStatus(flight) !== 'paid'; else purchased" type="flat" (btnClick)="buyTicket(flight)" [disabled]="!activeUser">Buy ticket</app-button> -->
+            
+            <div *ngIf="isPurchased(flight)" class="ticket-status-badge ticket-status-badge--purchased">
+                <mat-icon>beenhere</mat-icon>
+                <span>Purchased</span>
+            </div>
+            <div *ngIf="isBooked(flight)" class="ticket-status-badge ticket-status-badge--booked">
+                <mat-icon>bookmark_border</mat-icon>
+                <span>Booked</span>
+            </div>
         </div>
     </div>
 </div>
+
+<ng-template #extendedHeading>
+    <div class="row">
+        <p class="flight-number">&#x2708; {{ flight.flightNumber }}</p>
+        <p class="additional-info--normal"> Departure &#x27A7; {{ flight.departureTime | date: 'fullDate' }}</p>
+    </div>
+</ng-template>
+
+<ng-template #booked>
+    <div class="ticket-status-badge ticket-status-badge--booked">
+        <mat-icon>bookmark_border</mat-icon>
+        <span>Booked</span>
+    </div>
+</ng-template>
+
+<ng-template #purchased>
+    <div class="ticket-status-badge ticket-status-badge--purchased">
+        <mat-icon class="info-good">beenhere</mat-icon>
+        <span class="info-good">Purchased</span>
+    </div>
+</ng-template>

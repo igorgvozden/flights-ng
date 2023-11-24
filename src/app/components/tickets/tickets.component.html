@@ -1,8 +1,12 @@
-<p>tickets works!</p>
-
-<div *ngIf="true">
-    <p>tickets</p>
-    <div *ngFor="let ticket of tickets">
-        <li>{{ticket.price}}</li>
+<div class="container">
+    <div class="hero">
+        <app-hero [title]="title" [heroSrc]="heroSrc"></app-hero>
+    </div>
+    <div class="tickets-wallet">
+        <div class="table">
+            <div *ngFor="let ticket of tickets">
+                <app-ticket [ticket]="ticket" [activeUser]="activeUser" [@descendAnimation]></app-ticket>
+            </div>
+        </div>
     </div>
 </div>

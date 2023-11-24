@@ -22,6 +22,7 @@ import { flightDirectionOptions, airportsCodes } from '../flights.constants';
 import { AirportsService } from 'src/app/api/services/airports.service';
 import { untilDestroyed, UntilDestroy } from '@ngneat/until-destroy';
 import { RoundFlights } from 'src/app/api/services/flights.service';
+import { ProgressBarService } from 'src/app/api/services/progress-bar.service';
 
 @UntilDestroy()
 @Component({
@@ -57,11 +58,12 @@ export class SearchFlightsComponent implements OnChanges, OnInit {
   constructor(
     private route: ActivatedRoute,
     private flightsService: FlightsService,
+    private progressBarService: ProgressBarService,
     private airportsService: AirportsService
   ) {}
 
   ngOnChanges(changes: SimpleChanges): void {
-    console.log(changes);
+    console.log('changes............', changes);
   }
 
   ngOnInit(): void {
@@ -76,6 +78,7 @@ export class SearchFlightsComponent implements OnChanges, OnInit {
 
         // console.log(this.flights, this.isRoundTrip);
         this.emitFlights.next(this.flights);
+        this.progressBarService.setProgressBarStatus(false);
       });
 
     this.filteredOriginCity = this.filterCity('origin');
@@ -99,7 +102,9 @@ export class SearchFlightsComponent implements OnChanges, OnInit {
   }
 
   onSubmit = async () => {
-    console.log(this.searchData.value, this.airports);
+    this.progressBarService.setProgressBarStatus(true);
+
+    // console.log(this.searchData.value, this.airports);
     const { origin, destination, departureDate, returnDate } =
       this.searchData.getRawValue();
 
@@ -148,7 +153,7 @@ export class SearchFlightsComponent implements OnChanges, OnInit {
         returnDate
       );
     } else {
-      console.log('date only');
+      // console.log('date only');
       // ako ima samo date
       this.flightsService.getFlightsOnDate(departureDate);
     }

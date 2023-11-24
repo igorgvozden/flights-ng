@@ -12,20 +12,11 @@ import { DomSanitizer } from '@angular/platform-browser';
   styleUrls: ['./airports.component.scss'],
 })
 export class AirportsComponent implements OnInit, AfterViewInit {
-  @ViewChild('iframe') iframe;
+  @ViewChild('map') iframe;
   airports: Airport[] = [];
 
-  spot = '32.8998,-97.0403';
-
-  src =
-    'https://maps.google.com/maps?width=1000&amp;height=600&amp;hl=en&amp;q=%20new%20york+()&amp;t=&amp;z=4&amp;ie=UTF8&amp;iwloc=B&amp;&output=embed';
-
-  src1 =
-    'https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=en&amp;q=32.8998,-97.0403(My%20Business%20Name)&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed';
-
-  mapSrc = `https://maps.google.com/maps?width=1000&amp;height=600&amp;hl=en&amp;q=${this.spot}+(My%20Business%20Name)&amp;t=&amp;z=4&amp;ie=UTF8&amp;iwloc=B&amp;&output=embed`;
-  url = this.domSanitizer.bypassSecurityTrustResourceUrl(this.src);
-  url1 = () => this.domSanitizer.bypassSecurityTrustResourceUrl(this.mapSrc);
+  public url =
+    'https://storage.googleapis.com/maps-solutions-mplwvggm2b/locator-plus/qlav/locator-plus.html';
 
   constructor(
     private airportsService: AirportsService,
@@ -40,12 +31,13 @@ export class AirportsComponent implements OnInit, AfterViewInit {
       .subscribe((airports) => {
         if (airports) {
           this.airports = airports;
+          console.log(this.airports);
         }
       });
   }
 
   ngAfterViewInit(): void {
     console.log(this.iframe);
-    // this.iframe.src = this.url;
+    this.iframe.src = this.url;
   }
 }

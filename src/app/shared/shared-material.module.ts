@@ -9,6 +9,7 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatIconModule } from '@angular/material/icon';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 const matModules = [
   MatProgressBarModule,
@@ -21,6 +22,7 @@ const matModules = [
   MatIconModule,
   MatFormFieldModule,
   MatSelectModule,
+  MatTooltipModule,
 ];
 
 @NgModule({

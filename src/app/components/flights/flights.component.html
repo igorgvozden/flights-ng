@@ -6,6 +6,6 @@
         <app-search-flights (emitFlights)="captureFlights($event)"></app-search-flights>
     </div>
     <div class="flights-table">
-        <app-flights-table></app-flights-table>
+        <app-flights-table [activeUser]="activeUser"></app-flights-table>
     </div>
 </div>

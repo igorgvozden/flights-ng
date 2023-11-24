@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { ProgressBarService } from 'src/app/api/services/progress-bar.service';
 import { UserData } from 'src/app/shared/model/user-data.model';
 
 @Component({
@@ -17,13 +18,15 @@ export class HomeComponent implements OnInit {
 
   currency: string = 'USD';
 
-  constructor(private activatedRoute: ActivatedRoute) {}
+  constructor(
+    private activatedRoute: ActivatedRoute,
+    private progressBarService: ProgressBarService,
+  ) {}
 
   ngOnInit(): void {
-    // remove once data loading is implemented
-    setTimeout(() => {
-      this.showProgressBar = false;
-    }, 4000);
+    this.progressBarService.getProgressBarStatus().subscribe((status) => {
+      this.showProgressBar = status;
+    });
 
     this.activatedRoute.data.subscribe((data) => {
       // do something with your resolved data ...

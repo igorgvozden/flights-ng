@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable, BehaviorSubject, forkJoin, map } from 'rxjs';
 import { Flight } from 'src/app/shared/model/flight.model';
 import { DATABASE_URL } from '../constants';
+import { ProgressBarService } from './progress-bar.service';
 
 export interface RoundFlights {
   departureFlights: Flight[];

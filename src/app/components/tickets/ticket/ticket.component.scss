@@ -1,0 +1,114 @@
+@import "../../../../scss/variables";
+
+.container {
+  width: 100%;
+}
+
+.ticket {
+  margin: 0.5rem auto;
+  display: flex;
+  width: 80%;
+}
+
+.ticket-segment {
+  padding: 1rem 0;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+}
+
+.initial {
+  flex-basis: 15%;
+  background: $info-blue;
+  color: white;
+  border-radius: 10px;
+}
+
+.ticket-main {
+  margin: 0 3px;
+  flex-basis: 55%;
+  background-color: $light-grey;
+  border-radius: 10px;
+  overflow: hidden;
+
+  .destination {
+    display: flex;
+    background: $light-accent;
+
+    .destination__origin {
+      padding-top: 0.5rem;
+      flex-basis: 50%;
+      position: relative;
+
+      .triangle__icon {
+        margin: 0;
+        position: absolute;
+        top: 0;
+        right: 0;
+        font-size: 3.8rem;
+        color: $info-blue;
+        transform: translate(58%, 70%);
+      }
+    }
+
+    .destination__origin-city,
+    .destination__destination-city {
+      font-size: 1.3rem;
+    }
+
+    .destination__destination {
+      padding-top: 0.5rem;
+      background: $light-grey;
+      flex-basis: 50%;
+    }
+  }
+}
+
+.boarding-pass {
+  flex-basis: 30%;
+  background: $info-blue;
+  border-radius: 10px;
+}
+
+.ticket-title {
+  padding-left: 2rem;
+  font-size: 1.3rem;
+  color: white;
+  text-transform: capitalize;
+}
+
+.separator {
+  border-right: 2px dotted $dark-grey;
+  margin: 10px 1px;
+}
+
+.row {
+  margin: 0.5rem 0;
+  display: flex;
+  width: 100%;
+}
+
+.row--boarding {
+  flex-wrap: wrap;
+}
+
+.row__cell {
+  padding-left: 2rem;
+  flex-basis: 50%;
+}
+
+.label--bording-pass {
+  flex-basis: 100%;
+  color: white;
+}
+
+.ticket-value {
+  margin: 0;
+  font-weight: 500;
+  font-size: 1.1rem;
+}
+
+.label {
+  margin: 0;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+}

@@ -1,0 +1,108 @@
+<div class="container">
+    <div class="ticket">
+        <div class="initial ticket-segment">
+            <p class="ticket-title">{{ ticket.flight.flightNumber }}</p>
+        </div>
+        <!-- <div class="separator"></div> -->
+        <div class="ticket-main ticket-segment">
+            <div class="destination row">
+                <div class="row__cell destination__origin">
+                    <p class="destination__origin-city ticket-value">{{ ticket.flight.origin.city }}</p>
+                    <p class="label">FROM</p>
+                    <p class="triangle__icon">&#9992;</p>
+                </div>
+                <div class="row__cell destination__destination">
+                    <p class="destination__destination-city ticket-value">{{ ticket.flight.destination.city }}</p>
+                    <p class="label">TO</p>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="row__cell">
+                    <p class="label">NAME</p>
+                    <p class="ticket-value">{{ activeUser.user.firstName }} {{ activeUser.user.lastName }}</p>
+                </div>
+                <div class="row__cell">
+                    <p class="label">SEAT</p>
+                    <p class="ticket-value">seat number</p>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="row__cell">
+                    <p class="label">FLIGHT</p>
+                    <p class="ticket-value">{{ ticket.flight.flightNumber }}</p>
+                </div>
+                <div class="row__cell">
+                    <p class="label">CLASS</p>
+                    <p class="ticket-value">class</p>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="row__cell">
+                    <p class="label">date</p>
+                    <p class="ticket-value">{{ ticket.flight.departureTime }}</p>
+                </div>
+                <div class="row__cell">
+                    <p class="label">boarding till</p>
+                    <p class="ticket-value">{{ ticket.flight.departureTime }}</p>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="row__cell">
+                    <p class="label">gate</p>
+                    <p class="ticket-value">generate random gate num</p>
+                </div>
+                <div class="row__cell">
+                    <p class="label">QR code</p>
+                    <p class="ticket-value">generate QR kad skeniras dwnld img?</p>
+                </div>
+            </div>
+        </div>
+        <div class="separator"></div>
+        <div class="boarding-pass ticket-segment">
+            <p class="ticket-title">boarding pass</p>
+
+            <div class="row row--boarding">
+                <div class="row__cell">
+                    <p class="label label--bording-pass">name</p>
+                    <p class="ticket-value">{{ activeUser.user.firstName }} {{ activeUser.user.lastName }}</p>
+                </div>
+            </div>
+
+            <div class="row row--boarding">
+                <div class="row__cell">
+                    <p class="label label--bording-pass">FLIGHT</p>
+                    <p class="ticket-value">{{ ticket.flight.flightNumber }}</p>
+                </div>
+                <div class="row__cell">
+                    <p class="label label--bording-pass">SEAT</p>
+                    <p class="ticket-value">seat number</p>
+                </div>
+            </div>
+
+            <div class="row row--boarding">
+                <div class="row__cell">
+                    <p class="label label--bording-pass">date</p>
+                    <p class="ticket-value">{{ ticket.flight.departureTime }}</p>
+                </div>
+            </div>
+
+            <div class="row row--boarding">
+                <div class="row__cell">
+                    <p class="label label--bording-pass">from</p>
+                    <p class="ticket-value">{{ ticket.flight.origin.city }}</p>
+                </div>
+            </div>
+
+            <div class="row row--boarding">
+                <div class="row__cell">
+                    <p class="label label--bording-pass">to</p>
+                    <p class="ticket-value">{{ ticket.flight.destination.city }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

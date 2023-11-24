@@ -11,6 +11,12 @@
   justify-content: space-between;
 }
 
+.row-extendable {
+  padding: 1rem;
+  border-radius: 4px;
+  background-color: $primary-light;
+}
+
 .flight-number {
   padding: 0 0.5rem;
   color: $primary-navy;
@@ -20,14 +26,20 @@
 }
 
 .departure-arrival__time {
-  padding: 0.5rem;
+  padding: 0.1rem;
 }
+
+.airplane-info {
+  padding-top: 1rem;
+}
+
 .departure-arrival__icon {
   margin-right: 0.5rem;
   color: $primary-light-navy;
 }
 
 .main-info {
+  margin: 0;
   font-weight: 500;
 }
 
@@ -38,4 +50,34 @@
 .additional-info--small {
   color: $primary-light-navy;
   font-size: 0.8rem;
+}
+
+.ticket-status-badge {
+  border-radius: 25px;
+  padding: 0.1rem 0.3rem;
+  font-weight: 500;
+  font-size: 0.8rem;
+  color: white;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+
+  span, mat-icon {
+    display: inline;
+    padding-right: 0.2rem;
+  }
+
+  mat-icon {
+    font-size: 20px;
+  }
+}
+
+.ticket-status-badge--booked {
+  // border: 1px solid $info-blue;
+  // color: $info-blue;
+  background-color: $info-blue;
+}
+
+.ticket-status-badge--purchased {
+  // border: 1px solid $info-green;
+  // color: $info-green;
+  background-color: $info-green;
 }

@@ -3,4 +3,57 @@
         <app-hero [title]="title" [heroSrc]="heroSrc"></app-hero>
     </div>
 
+    <div class="bookings-container">
+        <h3 class="additional-info--normal" *ngIf="activeBookings.length < 1">Your bookings will be listed here.</h3>
+
+        <div class="bookings" *ngFor="let booking of activeBookings">
+            <div class="row row-booking" [@descendAnimation]>
+                <div class="column column-time">
+                    <div class="row row-booking-info">
+                        <p class="flight-number">&#x2708; {{ booking.flight.flightNumber }}</p>
+                        <p class="additional-info--normal"> Departure &#x27A7; {{ booking.flight.departureTime | date:
+                            'fullDate' }}</p>
+                    </div>
+                    <div class="departure-arrival__time">
+                        <mat-icon class="departure-arrival__icon">place</mat-icon>
+                        <span class="departure-arrival__text main-info"> {{ booking.flight.departureTime | getTimeISO:
+                            true
+                            }} - {{ booking.flight.origin.city }} ({{ booking.flight.origin.code }})</span>
+                    </div>
+
+                    <div class="departure-arrival__time">
+                        <mat-icon class="departure-arrival__icon">more_vert</mat-icon>
+                        <span class="additional-info--small">Travel time: {{ booking.flight.duration.locale
+                            }}</span>
+                    </div>
+
+                    <div class="departure-arrival__time">
+                        <mat-icon class="departure-arrival__icon">place</mat-icon>
+                        <span class="departure-arrival__text main-info"> {{ booking.flight.arrivalTime | getTimeISO:
+                            true }} - {{
+                            booking.flight.destination.city }} ({{ booking.flight.destination.code }})</span>
+                    </div>
+
+                    <div class="departure-arrival__time airplane-info">
+                        <p class="additional-info--small">Airplane model: {{ booking.flight.aircraft.model }}</p>
+                        <p class="additional-info--small">Number of seats: {{
+                            booking.flight.aircraft.passengerCapacity.total }}</p>
+                        <p class="additional-info--small">First class capacity: {{
+                            booking.flight.aircraft.passengerCapacity.first }}
+                        </p>
+                    </div>
+                </div>
+                <div class="column column-button">
+                    <mat-icon class="ticket-status-badge ticket-status-badge--expired"
+                        matTooltip="The flight allready took place. Try finding another one"
+                        *ngIf="booking.expired">error</mat-icon>
+                    <app-button type="stroked" (btnClick)="discardBooking(booking)" [disabled]="!activeUser">Discard
+                        booking</app-button>
+                    <app-button type="flat" [disabled]="!activeUser || booking.expired"
+                        (btnClick)="buyTicket(booking)">Buy
+                        ticket</app-button>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

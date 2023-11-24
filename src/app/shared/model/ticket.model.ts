@@ -1,9 +1,12 @@
+import { Flight } from "./flight.model";
+
 export interface Ticket {
-    id: string;
-    flightNumber: string;
+    id?: string;
     price: string;
     currency: string;
-    travelDate: string;
     status: string;
-    complete: boolean;
+    booked: boolean;
+    purchased: boolean;
+    expired: boolean;
+    flight: Flight;
   }

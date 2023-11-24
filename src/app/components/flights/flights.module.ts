@@ -20,6 +20,7 @@ import { FlightOverviewComponent } from './flights-table/flight-overview/flight-
     SearchFlightsComponent,
     FlightsTableComponent,
     FlightCardComponent,
+    FlightOverviewComponent
   ],
 })
 export class FlightsModule {}

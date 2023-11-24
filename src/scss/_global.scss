@@ -6,7 +6,6 @@ body {
 }
 
 body {
-  margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
@@ -24,4 +23,12 @@ body {
 
 .mat-mdc-select-value {
   width: fit-content;
+}
+
+.info-tooltip-icon {
+  color: $info-blue;
+}
+
+.info-good {
+  color: $info-green;
 }

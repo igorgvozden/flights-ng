@@ -20,6 +20,7 @@ import { UsersService } from 'src/app/api/services/users.service';
   selector: 'app-modal',
   templateUrl: './modal.component.html',
   styleUrls: ['./modal.component.scss'],
+  animations: [],
 })
 export class ModalComponent implements OnInit {
   @Input() users: UserData[] = [];
@@ -34,7 +35,7 @@ export class ModalComponent implements OnInit {
 
   ngOnInit(): void {
     this.usersService.activeUser$.subscribe((user) => {
-      console.log('behave yourself', user);
+      // console.log('behave yourself', user);
       this.activeUser = user;
     });
   }

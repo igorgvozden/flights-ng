@@ -8,6 +8,7 @@
             *ngFor="let btnValue of btnValues; let i = index" 
             mat-button-toggle 
             [checked]="btnValue === loadedComponent"
+            [disabled]="isDisabled(btnValue)"
             value="{{btnValue}}"
             [routerLink]="'/' + btnValue"
             >

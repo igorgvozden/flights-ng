@@ -6,8 +6,12 @@ import {
   SimpleChanges,
 } from '@angular/core';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
-import { FlightsService } from 'src/app/api/services/flights.service';
+import {
+  FlightsService,
+  RoundFlights,
+} from 'src/app/api/services/flights.service';
 import { Flight } from 'src/app/shared/model/flight.model';
+import { UserData } from 'src/app/shared/model/user-data.model';
 
 @UntilDestroy()
 @Component({
@@ -16,9 +20,11 @@ import { Flight } from 'src/app/shared/model/flight.model';
   styleUrls: ['./flights-table.component.scss'],
 })
 export class FlightsTableComponent implements OnInit {
+  @Input() activeUser: UserData;
+
   constructor(private flightsService: FlightsService) {}
 
-  flights;
+  flights: RoundFlights;
 
   ngOnInit(): void {
     this.flightsService
@@ -33,7 +39,6 @@ export class FlightsTableComponent implements OnInit {
           flights.returnFlights = flights.returnFlights.slice(0, 50);
         }
         this.flights = flights;
-        console.log(this.flights);
       });
   }
 }
