@@ -24,7 +24,13 @@ import { TicketsModule } from './tickets/tickets.module';
     // FlightsTableComponent,
     // FlightCardComponent,
   ],
-  imports: [SharedModule, HomeModule, FlightsModule, BookingsModule, TicketsModule],
+  imports: [
+    SharedModule,
+    HomeModule,
+    FlightsModule,
+    BookingsModule,
+    TicketsModule,
+  ],
   exports: [
     AirportsComponent,
     // FlightsComponent,
